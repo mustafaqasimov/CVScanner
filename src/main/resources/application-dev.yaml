@@ -18,3 +18,9 @@ spring:
     multipart:
       max-file-size: 500MB
       max-request-size: 500MB
+
+security:
+  jwt:
+    secret: ${JWT_SECRET}
+    issuer: cvscanner
+    expiration-minutes: 60
