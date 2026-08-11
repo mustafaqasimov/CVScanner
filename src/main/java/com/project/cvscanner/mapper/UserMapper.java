@@ -6,7 +6,7 @@ import com.project.cvscanner.dto.response.AuthResponse;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
-@Mapper(componentModel = "Spring")
+@Mapper(componentModel = "spring")
 public interface UserMapper {
 
     @Mapping(target = "id", ignore = true)
