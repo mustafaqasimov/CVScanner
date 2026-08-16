@@ -1,8 +1,6 @@
 package com.project.cvscanner.exception;
 
-import com.project.cvscanner.exception.error.InvalidCredentialsException;
-import com.project.cvscanner.exception.error.ResourceAlreadyExistsException;
-import com.project.cvscanner.exception.error.ResourceNotFoundException;
+import com.project.cvscanner.exception.error.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -39,6 +37,24 @@ public class GlobalExceptionHandler {
     public ResponseEntity<Map<String, Object>> handleInvalidCredentials(InvalidCredentialsException ex) {
         log.error("Invalid credentials", ex);
         return buildErrorResponse(HttpStatus.UNAUTHORIZED, ex.getMessage());
+    }
+
+    @ExceptionHandler(CvParsingException.class)
+    public ResponseEntity<Map<String, Object>> handleCvParsingException(CvParsingException ex) {
+        log.error("Error parsing CV", ex);
+        return buildErrorResponse(HttpStatus.BAD_REQUEST, ex.getMessage());
+    }
+
+    @ExceptionHandler(InvalidUploadException.class)
+    public ResponseEntity<Map<String, Object>> handleInvalidUpload(InvalidUploadException ex) {
+        log.error("Invalid upload", ex);
+        return buildErrorResponse(HttpStatus.BAD_REQUEST, ex.getMessage());
+    }
+
+    @ExceptionHandler(UnauthorizedException.class)
+    public ResponseEntity<Map<String, Object>> handleUnAuthorized(UnauthorizedException ex) {
+        log.error("Unauthorized access", ex);
+        return buildErrorResponse(HttpStatus.FORBIDDEN, ex.getMessage());
     }
 
     private ResponseEntity<Map<String, Object>> buildErrorResponse(HttpStatus status, String message) {
