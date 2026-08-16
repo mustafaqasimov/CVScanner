@@ -7,3 +7,74 @@ spring:
 
 server:
   port: 8080
+
+cv-extraction:
+  known-skills:
+      - Java
+      - Python
+      - JavaScript
+      - TypeScript
+      - React
+      - Angular
+      - Vue.js
+      - Spring Boot
+      - Spring
+      - Node.js
+      - Express
+      - Django
+      - Flask
+      - Docker
+      - Kubernetes
+      - PostgreSQL
+      - MySQL
+      - MongoDB
+      - Redis
+      - AWS
+      - Azure
+      - GCP
+      - Git
+      - REST
+      - GraphQL
+      - Kafka
+      - RabbitMQ
+      - C++
+      - C#
+      - Go
+      - Rust
+      - PHP
+      - Ruby
+      - Swift
+      - Kotlin
+      - Terraform
+      - Jenkins
+      - CI/CD
+
+  known-locations:
+      - Baku
+      - Baki
+      - Ganja
+      - Sumgait
+      - Remote
+      - Istanbul
+      - Ankara
+      - London
+      - Berlin
+      - Munich
+      - New York
+      - San Francisco
+      - Tbilisi
+      - Moscow
+      - Dubai
+      - Warsaw
+      - Amsterdam
+      - Paris
+      - Toronto
+
+  job-type-keywords:
+    remote: Remote
+    hybrid: Hybrid
+    on-site: Onsite
+    onsite: Onsite
+    full-time: Full-time
+    part-time: Part-time
+    freelance: Freelance
