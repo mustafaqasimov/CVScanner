@@ -3,6 +3,9 @@ package com.project.cvscanner.controller;
 import com.project.cvscanner.dto.response.UploadResponse;
 import com.project.cvscanner.security.AuthFacade;
 import com.project.cvscanner.service.CvUploadService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,11 +18,13 @@ import org.springframework.web.multipart.MultipartFile;
 @RestController
 @RequestMapping("/cv")
 @RequiredArgsConstructor
+@Tag(name = "CV Upload", description = "Operations related to CV upload")
 public class CvUploadController {
 
     private final CvUploadService cvUploadService;
     private final AuthFacade authFacade;
 
+    @Operation(summary = "Upload CV", description = "The CV file to upload")
     @PostMapping(value = "/upload", consumes = "multipart/form-data")
     public ResponseEntity<UploadResponse> upload(@RequestParam("file") MultipartFile file) {
         Long currentUserId = authFacade.getCurrentUserId();
