@@ -1,6 +1,7 @@
 package com.project.cvscanner.mapper;
 
 import com.project.cvscanner.domain.entities.Candidate;
+import com.project.cvscanner.dto.response.CandidateResponse;
 import com.project.cvscanner.extraction.model.ExtractedCandidateInfo;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -21,4 +22,7 @@ public interface CandidateMapper {
     @Mapping(target = "sourceFileName", source = "sourceFileName")
     @Mapping(target = "batchJobRunId", source = "batchJobRunId")
     Candidate toEntity(ExtractedCandidateInfo info, String sourceFileName, Long batchJobRunId);
+
+    @Mapping(target = "id", source = "id")
+    CandidateResponse toResponse(Candidate candidate);
 }

@@ -1,32 +1,41 @@
 package com.project.cvscanner.dto.request;
 
+import com.project.cvscanner.domain.enums.Role;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.experimental.FieldDefaults;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@FieldDefaults(level = AccessLevel.PRIVATE)
-@Schema(description = "Request payload for user registration", name = "RegisterRequest")
-public class RegisterRequest {
+@FieldDefaults(level = lombok.AccessLevel.PRIVATE)
+@Schema(description = "Request payload for creating an admin user")
+public class CreateAdminRequest {
 
+    @Schema(description = "The username for the admin user")
     @NotBlank(message = "Username is required")
     @Size(min = 3, max = 50)
-    @Schema(description = "The username for the new user", example = "johndoe")
     String userName;
 
+    @Schema(description = "The email for the admin user")
     @NotBlank(message = "Email is required")
     @Email(message = "Email should be valid")
-    @Schema(description = "The email address for the new user", example = "johndoe@example.com")
     String email;
 
+    @Schema(description = "The password for the admin user")
     @NotBlank(message = "Password is required")
     @Size(min = 8, message = "Password must be at least 8 characters")
-    @Schema(description = "The password for the new user", example = "securePassword123")
     String password;
+
+    @Schema(description = "The role for the admin user")
+    @NotNull(message = "Role is required")
+    Role role;
 }
